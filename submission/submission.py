@@ -1,5 +1,21 @@
 """Reinforcment learning submission template"""
 from submission.rl_training import *
+import pkg_resources
+
+
+def load_agent():
+    """
+    Load reinforcment learning agent
+
+    Returns
+    -------
+    _type_
+        Reinformcment learning agent
+    """
+    stream = pkg_resources.resource_stream(__name__, "my_test.zip")
+    agent = SAC.load(stream)
+    return agent
+
 
 def predict(home):
     """
@@ -16,7 +32,7 @@ def predict(home):
         List of actions corresponding to hvac, wh, and electric vehicle
     """
     # Load agent
-    agent = SAC.load("../../submission/my_test")
+    agent = load_agent()
 
     # Normalize observations
     norm_obs = normalization(home)
