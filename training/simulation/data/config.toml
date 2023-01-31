@@ -7,6 +7,11 @@ overwrite_existing = true
 house_p_avg = 1.2
 n_players = 1
 
+[community.schedules]
+early_birds = 0.25
+night_owls = 0.25
+normal = 0.5
+
 [simulation]
 start_datetime = "2003-06-01 00"
 end_datetime = "2003-06-03 00"
@@ -65,7 +70,7 @@ efficiency = [0.15, 0.2]
 [home.hems]
 weekday_occ_schedule = [19,8,17,18]
 prediction_horizon = 1
-sub_subhourly_steps = 1
+sub_subhourly_steps = 6
 discount_factor = 0.92
 solver = "GLPK_MI"
 
