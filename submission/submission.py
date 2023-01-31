@@ -1,6 +1,6 @@
 """Reinforcment learning submission template"""
 from submission.rl_training import *
-
+import os
 def predict(home):
     """
     Simple rule-based prediction function as a template
