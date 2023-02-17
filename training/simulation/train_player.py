@@ -2,9 +2,8 @@ from datetime import datetime
 import asyncio
 import argparse
 
-from dragg_comp.player import PlayerHome
-from dragg_comp.envs import RLTrainingEnv
-from submission.rl_training import *
+from dragg_comp.envs import *
+from rl_training import *
 
 REDIS_URL = "redis://localhost"
 
@@ -24,6 +23,5 @@ if __name__=="__main__":
 	train(env)
 
 	asyncio.run(env.post_status("done"))
-	print(env.score())
 	toc = datetime.now()
 	print(toc-tic)

@@ -4,13 +4,19 @@ import numpy as np
 def reward(home):
     """
     Reward function
-    :input:
+    :input: PlayerHome object
+    :output: float
     """
     # print(home.obs_dict)
     reward = home.obs_dict['my_demand'] / 3.5
     return reward
 
 def normalization(home):
+    """
+    A function that returns the normalized list of observations
+    :input: PlayerHome object
+    :output: list of floats (any length)
+    """
     normalized_obs = []
     for name, value in sorted(home.obs_dict.items()):
         if "t_out" in name:
@@ -26,15 +32,19 @@ def normalization(home):
         normalized_obs += [norm_value]
     return normalized_obs
 
-def train(home): # could also make training_env and arg of train 
-    # training_env = 
+def train(home):
+    """
+    A function that creates and saves an RL agent utilizing the Stable-Baselines3 package
+    """
     num_training_steps = 50
     agent = SAC("MlpPolicy", home, verbose=1)
     agent.learn(num_training_steps)
     agent.save("../../submission/my_test.zip")
 
 def norm_helper(value, exp_max, exp_min):
-    """ This helper function returns a value that
+    """ 
+    This helper function returns a value that
     is approximately between [-1,1] given a value,
-    the expected max and the expected min. """
+    the expected max and the expected min. 
+    """
     return 2 * (value / (exp_max - exp_min)) - 1

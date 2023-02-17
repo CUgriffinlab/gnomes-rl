@@ -2,7 +2,6 @@
 from submission.rl_training import *
 import pkg_resources
 
-
 def load_agent():
     """
     Load reinforcment learning agent
@@ -10,7 +9,7 @@ def load_agent():
     Returns
     -------
     _type_
-        Reinformcment learning agent
+        Reinforcement learning agent
     """
     stream = pkg_resources.resource_stream(__name__, "my_test.zip")
     agent = SAC.load(stream)
@@ -28,7 +27,7 @@ def predict(home):
     Returns
     -------
     list
-        List of actions corresponding to hvac, wh, and electric vehicle
+        List of actions (floats in [-1,1]) corresponding to hvac, wh, and electric vehicle
     """
     # Load agent
     agent = load_agent()
